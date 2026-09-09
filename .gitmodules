@@ -1,0 +1,3 @@
+[submodule "CReact"]
+	path = CReact
+	url = https://github.com/gorciu-official/CReact.git
