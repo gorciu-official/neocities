@@ -49,22 +49,42 @@ int main() {
                 CR_STYLE_PAIR("text-align", "center")
             )
             CR_STYLE_FOR(
-                "p, h1",
-                CR_STYLE_PAIR("margin-bottom", "10px")
+                "p, h1, h2",
+                CR_STYLE_PAIR("padding-bottom", "10px")
             )
             CR_STYLE_FOR(
                 "h1",
                 CR_STYLE_PAIR("font-size", "30px")
             )
+            CR_STYLE_FOR(
+                "h2",
+                CR_STYLE_PAIR("font-size", "25px")
+            )
+            CR_STYLE_FOR(
+                ".article-card",
+                CR_STYLE_PAIR("background-color", "black")
+                CR_STYLE_PAIR("padding", "10px")
+            )
+            CR_STYLE_FOR(
+                ".article-card-group div:has(.article-card):last-child .article-card",
+                CR_STYLE_PAIR("margin-top", "20px")
+            )
+            CR_STYLE_FOR(
+                ".article-card-group div:has(.article-card)",
+                CR_STYLE_PAIR("max-width", "50%")
+            )
+            CR_STYLE_FOR(
+                ".article-card-group",
+                CR_STYLE_PAIR("display", "flex")
+                CR_STYLE_PAIR("gap", "30px")
+                CR_STYLE_PAIR("margin", "20px 0")
+            )
         ),
         CR_ELEMENT(
             "main", CR_ATTRS(),
             EL_CENTER(
-                CR_ELEMENT(
-                    "h1", CR_ATTRS(),
-                    CR_TEXT("Gorciu's corner (v2)")
-                ),
-                EL_PARAGRAPH(
+                EL_HEADER(1, CR_TEXT("Gorciu's corner (v2)")),
+                EL_PARAGRAPH( 
                     EL_LINK_OUT("https://github.com/gorciu-official", CR_TEXT("GitHub")),
                     CR_TEXT(" ・ "),
                     EL_LINK_OUT("https://discord.com/users/990959984005222410", CR_TEXT("Discord")),
@@ -72,7 +92,13 @@ int main() {
                     EL_LINK_OUT("https://github.com/gorciu-official/neocities", CR_TEXT("Website's source code"))
                 )
             ),
-            EL_PARAGRAPH(CR_TEXT("Hi, welcome to my little blog/website/corner/whatever (written in C!), I hope you'll find something useful here (you will not)!")) 
+            EL_PARAGRAPH(CR_TEXT("Hi, welcome to my little blog/website/corner/whatever (written in C!), I hope you'll find something useful here (you will not)!")),
+            EL_CENTER(
+                EL_ARTICLE_CARDS( 
+                    EL_ARTICLE_CARD("demo 1", "so ehhh demo 1 This website is written in C. Hi, welcome to my little blog/website/corner/whatever (written in C!), I hope you'll find something useful here (you will not)!"),
+                    EL_ARTICLE_CARD("demo 2", "so ehhh demo 2Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat..")
+                )
+            ) 
         )
     ); 
  
