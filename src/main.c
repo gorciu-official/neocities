@@ -4,7 +4,8 @@
 #include <creact/tree-builder.h>
 
 #include "local-nodes.h"
-
+#include "windows.h"
+ 
 int main() {
     puts("Hi, so... ehhh... this website is written in the C programming language. Check its source out: https://github.com/gorciu-official/neocities");
 
@@ -49,7 +50,7 @@ int main() {
                 CR_STYLE_PAIR("text-align", "center")
             )
             CR_STYLE_FOR(
-                "p, h1, h2",
+                "p:not(.window-title p), h1, h2",
                 CR_STYLE_PAIR("padding-bottom", "10px")
             )
             CR_STYLE_FOR(
@@ -66,6 +67,11 @@ int main() {
                 CR_STYLE_PAIR("padding", "10px")
             )
             CR_STYLE_FOR(
+                ".article-card h2",
+                CR_STYLE_PAIR("user-select", "none")
+                CR_STYLE_PAIR("cursor", "pointer")
+            )
+            CR_STYLE_FOR(
                 ".article-card-group div:has(.article-card):last-child .article-card",
                 CR_STYLE_PAIR("margin-top", "20px")
             )
@@ -79,10 +85,41 @@ int main() {
                 CR_STYLE_PAIR("gap", "30px")
                 CR_STYLE_PAIR("margin", "20px 0")
             )
+            CR_STYLE_FOR(
+                ".window",
+                CR_STYLE_PAIR("position", "absolute")
+                CR_STYLE_PAIR("background-color", "black")
+                CR_STYLE_PAIR("width", "50%")
+            )
+            CR_STYLE_FOR(
+                ".window-title",
+                CR_STYLE_PAIR("background-color", "#241f31")
+                CR_STYLE_PAIR("padding", "5px")
+                CR_STYLE_PAIR("width", "100%")
+                CR_STYLE_PAIR("cursor", "grabbing")
+                CR_STYLE_PAIR("user-select", "none")
+                CR_STYLE_PAIR("display", "flex")
+                CR_STYLE_PAIR("justify-content", "space-between")
+            )
+            CR_STYLE_FOR(
+                ".window-close-btn",
+                CR_STYLE_PAIR("padding", "2px 4px")
+                CR_STYLE_PAIR("background-color", "red")
+                CR_STYLE_PAIR("cursor", "pointer")
+            )
+            CR_STYLE_FOR(
+                ".window-content",
+                CR_STYLE_PAIR("padding", "10px")
+                CR_STYLE_PAIR("width", "100%")
+            )
+            CR_STYLE_FOR(
+                ".hidden",
+                CR_STYLE_PAIR("display", "none")
+            )
         ),
         CR_ELEMENT(
             "main", CR_ATTRS(),
-            EL_CENTER(
+            EL_CENTER( 
                 EL_HEADER(1, CR_TEXT("Gorciu's corner (v2)")),
                 EL_PARAGRAPH( 
                     EL_LINK_OUT("https://github.com/gorciu-official", CR_TEXT("GitHub")),
@@ -91,17 +128,21 @@ int main() {
                     CR_TEXT(" ・ "),
                     EL_LINK_OUT("https://github.com/gorciu-official/neocities", CR_TEXT("Website's source code"))
                 )
-            ),
+            ), 
             EL_PARAGRAPH(CR_TEXT("Hi, welcome to my little blog/website/corner/whatever (written in C!), I hope you'll find something useful here (you will not)!")),
             EL_CENTER(
                 EL_ARTICLE_CARDS( 
-                    EL_ARTICLE_CARD("demo 1", "so ehhh demo 1 This website is written in C. Hi, welcome to my little blog/website/corner/whatever (written in C!), I hope you'll find something useful here (you will not)!"),
-                    EL_ARTICLE_CARD("demo 2", "so ehhh demo 2Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat..")
+                    EL_ARTICLE_CARD("this-website-is-written-in-c", "demo 1", "so ehhh demo 1 This website is written in C. Hi, welcome to my little blog/website/corner/whatever (written in C!), I hope you'll find something useful here (you will not)!")
                 )
             ) 
+        ),
+        EL_ARTICLE( 
+            "This website is written entirelly in C",
+            "this-website-is-written-in-c", "September 12, 2026",
+            EL_HEADER(1, CR_TEXT("yes")) 
         )
     ); 
- 
+  
     creact_render( 
         "#creact-root",
         (creact_node_t[]){
@@ -109,4 +150,7 @@ int main() {
             { .type = CREACT_NODE_TYPE_END }
         }
     );
+
+    init_draggable_windows();
+    init_article_links();
 }
