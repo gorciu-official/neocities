@@ -1,6 +1,7 @@
 #pragma once
 
-#include "creact/tree-builder.h"
+#include <creact/tree-builder.h>
+
 #define EL_CENTER(...) \
     CR_ELEMENT( \
         "div", CR_ATTRS( \
@@ -78,7 +79,23 @@
                 CR_ATTR("id", "article-" id), \
                 CR_ATTR("class", "window-content") \
             ), \
-            EL_HEADER(1, CR_TEXT(name)), \
+            EL_HEADER(2, CR_TEXT(name)), \
             __VA_ARGS__ \
         ) \
     )
+
+#define EL_CENTERED_IMAGE(url) \
+    EL_CENTER( \
+        CR_ELEMENT( \
+            "img", CR_ATTRS( \
+                "src", url, \
+                "style", "max-width: 85%" \
+            ) \
+        ) \
+    )
+
+#define EL_UNORDERED_LIST(...) \
+    CR_ELEMENT("ul", CR_ATTRS(), __VA_ARGS__)
+
+#define EL_LIST_ENTRY(...) \
+    CR_ELEMENT("li", CR_ATTRS(), __VA_ARGS__)
