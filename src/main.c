@@ -148,7 +148,7 @@ int main() {
         ),  
         EL_ARTICLE( 
             "This website is written entirelly in C",
-            "this-website-is-written-in-c", "September 12, 2026",
+            "this-website-is-written-in-c", "September 13, 2026",
             EL_PARAGRAPH(
                 CR_TEXT("Yes. You heard it right. This website is written (nearly) entirelly in C. It is powered by my shitty framework, "),
                 EL_LINK_OUT("https://github.com/gorciu-official/CReact", CR_TEXT("CReact")),
@@ -201,6 +201,10 @@ int main() {
             ),
             EL_PARAGRAPH(
                 CR_TEXT("Also it solved the issue of code duplication, you can just use C macros to shorten anything.")
+            ),
+            EL_HEADER(3, CR_TEXT("That's it")),
+            EL_PARAGRAPH(
+                CR_TEXT("I don't really know what to say here, so let's just assume I told you everything and say goodbye. So... goodbye!")
             )
         )
     ); 
