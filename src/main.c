@@ -69,6 +69,7 @@ int main() {
                 ".article-card",
                 CR_STYLE_PAIR("background-color", "black")
                 CR_STYLE_PAIR("padding", "10px")
+                CR_STYLE_PAIR("text-align", "left")
             )
             CR_STYLE_FOR(
                 ".article-card h2",
@@ -142,7 +143,7 @@ int main() {
             EL_PARAGRAPH(CR_TEXT("Hi, welcome to my little blog/website/corner/whatever (written in C!), I hope you'll find something useful here (you will not)!")),
             EL_CENTER(
                 EL_ARTICLE_CARDS( 
-                    EL_ARTICLE_CARD("this-website-is-written-in-c", "demo 1", "so ehhh demo 1 This website is written in C. Hi, welcome to my little blog/website/corner/whatever (written in C!), I hope you'll find something useful here (you will not)!")
+                    EL_ARTICLE_CARD("this-website-is-written-in-c", "This website is written entirelly in C", "It is created using my shitty framework, CReact, which uses cpp and WebAssembly magic to write websites in C.")
                 )
             ) 
         ),  
