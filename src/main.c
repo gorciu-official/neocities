@@ -95,7 +95,7 @@ int main() {
                 CR_STYLE_PAIR("position", "absolute")
                 CR_STYLE_PAIR("background-color", "black")
                 CR_STYLE_PAIR("width", "50%")
-            )  
+            )   
             CR_STYLE_FOR(
                 ".window-title",
                 CR_STYLE_PAIR("background-color", "#241f31")
